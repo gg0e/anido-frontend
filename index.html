@@ -1875,6 +1875,7 @@ function ViewAllPage({
       top: 0,
       zIndex: 50,
       background: th.navBg,
+      WebkitBackdropFilter: "blur(20px)",
       backdropFilter: "blur(20px)",
       borderBottom: `1px solid rgba(${th.accentRgb},0.12)`,
       padding: "14px 20px",
@@ -2060,6 +2061,7 @@ function QuickActionPanel({
       inset: 0,
       zIndex: 250,
       background: "rgba(0,0,0,0.65)",
+      WebkitBackdropFilter: "blur(6px)",
       backdropFilter: "blur(6px)",
       display: "flex",
       alignItems: "flex-end",
@@ -2072,6 +2074,7 @@ function QuickActionPanel({
     style: {
       width: "100%",
       background: th.navBg,
+      WebkitBackdropFilter: "blur(28px)",
       backdropFilter: "blur(28px)",
       borderRadius: "22px 22px 0 0",
       padding: "10px 20px 36px",
@@ -2400,6 +2403,7 @@ function AnimeDetailPage({
       justifyContent: "center",
       cursor: "pointer",
       fontSize: 20,
+      WebkitBackdropFilter: "blur(10px)",
       backdropFilter: "blur(10px)",
       zIndex: 10
     }
@@ -2594,6 +2598,7 @@ function AnimeDetailPage({
       right: 0,
       padding: "14px 20px 28px",
       background: th.navBg,
+      WebkitBackdropFilter: "blur(20px)",
       backdropFilter: "blur(20px)",
       borderTop: `1px solid rgba(${th.accentRgb},0.12)`,
       zIndex: 10
@@ -2886,6 +2891,7 @@ function ThemePicker({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       background: "rgba(8,8,8,0.97)",
+      WebkitBackdropFilter: "blur(24px)",
       backdropFilter: "blur(24px)",
       border: "1px solid rgba(255,255,255,0.08)",
       borderRadius: isMobile ? "20px 20px 0 0" : "20px",
@@ -3741,6 +3747,7 @@ function UniverseCanvas({
       flexDirection: "column",
       gap: 5,
       background: "rgba(0,0,0,0.5)",
+      WebkitBackdropFilter: "blur(8px)",
       backdropFilter: "blur(8px)",
       borderRadius: 10,
       padding: "8px 10px",
@@ -3781,6 +3788,7 @@ function UniverseCanvas({
       pointerEvents: "none",
       whiteSpace: "nowrap",
       background: "rgba(0,0,0,0.4)",
+      WebkitBackdropFilter: "blur(4px)",
       backdropFilter: "blur(4px)",
       padding: "4px 12px",
       borderRadius: 100
@@ -3946,6 +3954,9 @@ function TemporalDiscover({
       gap: 6,
       marginBottom: 20,
       overflowX: "auto",
+      WebkitOverflowScrolling: "touch",
+      msOverflowStyle: "none",
+      scrollbarWidth: "none",
       paddingBottom: 4
     },
     className: "hs"
@@ -4577,6 +4588,9 @@ function PerfectJourney({
       gap: 8,
       marginBottom: 22,
       overflowX: "auto",
+      WebkitOverflowScrolling: "touch",
+      msOverflowStyle: "none",
+      scrollbarWidth: "none",
       paddingBottom: 4
     },
     className: "hs"
@@ -5321,6 +5335,7 @@ function BottomNav({
   }, /*#__PURE__*/React.createElement("div", {
     style: {
       background: th.navBg,
+      WebkitBackdropFilter: "blur(24px)",
       backdropFilter: "blur(24px)",
       borderTop: `1px solid rgba(${th.accentRgb},0.14)`,
       boxShadow: `0 -8px 32px rgba(0,0,0,0.45)`
@@ -6017,27 +6032,16 @@ function HoverOverlay({ item, th, isRTL, t, onClickCard }) {
       position: "absolute",
       inset: 0,
       background: `linear-gradient(to top,${th.bgCard} 20%,rgba(0,0,0,0.75) 55%,rgba(0,0,0,0.15))`,
+      WebkitBackdropFilter: "blur(4px)",
       backdropFilter: "blur(4px)",
       display: "flex",
       flexDirection: "column",
-      justifyContent: "flex-end",
-      padding: 12,
-      zIndex: 10
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%,-50%)",
-      display: "flex",
-      flexDirection: "column",
+      justifyContent: "center",
       alignItems: "center",
       gap: 9,
-      zIndex: 20,
-      padding: 14,
       textAlign: "center",
-      width: "100%"
+      padding: "12px 14px",
+      zIndex: 10
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -6113,7 +6117,7 @@ function HoverOverlay({ item, th, isRTL, t, onClickCard }) {
       borderRadius: 7,
       cursor: "pointer"
     }
-  }, "+"))));
+  }, "+")));
 }
 
 function App() {
@@ -6511,6 +6515,12 @@ function App() {
         .tr-feat:hover{transform:translateY(-5px);}
         .tr-feat .feat-ov, .tr-sm .tr-ov2, .rc-card .tr-ov2, .mc-card .tr-ov2, .era-anime-c .tr-ov2 {opacity:0;transition:opacity .28s;}
         .tr-feat:hover .feat-ov, .tr-sm:hover .tr-ov2, .rc-card:hover .tr-ov2, .mc-card:hover .tr-ov2, .era-anime-c:hover .tr-ov2 {opacity:1;}
+        @media(hover:none){
+          .tr-sm .tr-ov2,.rc-card .tr-ov2,.mc-card .tr-ov2,.era-anime-c .tr-ov2,.tr-feat .tr-ov2{opacity:1!important;}
+          .tr-feat .feat-ov{opacity:1!important;}
+          .tr-sm:hover,.rc-card:hover,.mc-card:hover,.era-anime-c:hover,.tr-feat:hover{transform:none!important;}
+          .tr-feat:hover img,.tr-sm:hover img,.rc-card:hover img,.mc-card:hover img{transform:none!important;opacity:1!important;}
+        }
         .tr-feat img,.tr-sm img{transition:opacity .5s,transform .5s;}
         .tr-feat:hover img,.tr-sm:hover img{opacity:.85!important;transform:scale(1.05);}
         .tr-sm{aspect-ratio:2/3;transition:transform .3s,border-color .25s;}
@@ -6586,19 +6596,21 @@ function App() {
           .navbar{padding:12px 18px!important;}
           .navbar.sc{padding:10px 18px!important;}
           .hero-content{padding:0 20px!important;padding-top:80px!important;}
-          .hero-content h1{font-size:clamp(30px,8vw,48px)!important;}
-          .hero-content h2{font-size:clamp(14px,4vw,20px)!important;}
+          .hero-content h1{font-size:clamp(28px,7vw,44px)!important;}
+          .hero-content h2{font-size:clamp(13px,3.5vw,18px)!important;}
           .hero-content p{display:none;}
-          .hero-btns{flex-direction:column!important;gap:10px!important;}
-          .hero-btns button{width:100%!important;justify-content:center!important;}
+          .hero-btns{flex-direction:row!important;gap:8px!important;}
+          .hero-btns button{flex:1!important;justify-content:center!important;padding:10px 12px!important;font-size:13px!important;}
           .hero-thumbs{display:none!important;}
+          .hdot{width:6px!important;height:6px!important;}
           .section-pad{padding-left:16px!important;padding-right:16px!important;margin-bottom:8px;}
           .genre-pills-row{padding-left:16px!important;padding-right:16px!important;}
           .divider-wrap{margin:32px 0!important;}
           .cw-c{min-width:160px!important;}
           .cw-c img{height:95px!important;}
           .tr-feat{min-width:180px!important;}
-          .tr-sm{min-width:130px!important;}
+          .tr-sm{min-width:115px!important;}
+          .tr-sm .tr-ov2{font-size:11px!important;}
           .bento-grid{grid-template-columns:1fr!important;grid-template-rows:auto!important;}
           .bento-large{grid-row:auto!important;min-height:240px!important;}
           .bento-small{min-height:130px!important;}
@@ -6615,6 +6627,9 @@ function App() {
           .tr-sm{min-width:120px!important;}
           .logo-text{font-size:28px!important;letter-spacing:4px!important;}
         }
+        .hs-scroll{overflow-x:auto;display:flex;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;}
+        .hs-scroll::-webkit-scrollbar{display:none;}
+        .hs-scroll > *{flex-shrink:0;}
       `), /*#__PURE__*/React.createElement("style", null, `:root{--ac:${th.accent};--ac-rgb:${th.accentRgb};}`), pickerOpen && /*#__PURE__*/React.createElement(ThemePicker, {
     themeId: themeId,
     setThemeId: setThemeId,
@@ -7000,6 +7015,7 @@ function App() {
       [isRTL ? "right" : "left"]: 0,
       width: 230,
       background: "rgba(8,8,12,0.98)",
+      WebkitBackdropFilter: "blur(24px)",
       backdropFilter: "blur(24px)",
       border: "1px solid rgba(255,255,255,0.08)",
       borderRadius: 18,
@@ -7155,7 +7171,7 @@ function App() {
     className: "theme-transition",
     style: {
       position: "relative",
-      height: "100vh",
+      height: "100dvh",
       minHeight: 560,
       overflow: "hidden"
     }
@@ -7403,7 +7419,40 @@ function App() {
       color: "rgba(255,255,255,0.28)",
       letterSpacing: 1
     }
-  }, String(heroIdx + 1).padStart(2, "0"), " / ", String(heroData.length).padStart(2, "0"))))), /*#__PURE__*/React.createElement("div", {
+  }, String(heroIdx + 1).padStart(2, "0"), " / ", String(heroData.length).padStart(2, "0"))))), isMobile && /*#__PURE__*/React.createElement(React.Fragment, null,
+    /*#__PURE__*/React.createElement("button", {
+      onClick: () => goHero((heroIdx - 1 + heroData.length) % heroData.length),
+      style: {
+        position: "absolute",
+        left: 14, top: "50%", transform: "translateY(-50%)",
+        zIndex: 8, width: 38, height: 38, borderRadius: "50%",
+        background: "rgba(0,0,0,0.55)",
+        border: "1px solid rgba(255,255,255,0.15)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        cursor: "pointer", WebkitBackdropFilter: "blur(8px)",
+      backdropFilter: "blur(8px)"
+      }
+    }, /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 24 24",
+      style: { width: 18, height: 18, stroke: "white", fill: "none", strokeWidth: 2.5 }
+    }, /*#__PURE__*/React.createElement("polyline", { points: "15 18 9 12 15 6" }))),
+    /*#__PURE__*/React.createElement("button", {
+      onClick: () => goHero((heroIdx + 1) % heroData.length),
+      style: {
+        position: "absolute",
+        right: 14, top: "50%", transform: "translateY(-50%)",
+        zIndex: 8, width: 38, height: 38, borderRadius: "50%",
+        background: "rgba(0,0,0,0.55)",
+        border: "1px solid rgba(255,255,255,0.15)",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        cursor: "pointer", WebkitBackdropFilter: "blur(8px)",
+      backdropFilter: "blur(8px)"
+      }
+    }, /*#__PURE__*/React.createElement("svg", {
+      viewBox: "0 0 24 24",
+      style: { width: 18, height: 18, stroke: "white", fill: "none", strokeWidth: 2.5 }
+    }, /*#__PURE__*/React.createElement("polyline", { points: "9 18 15 12 9 6" })))
+  ), /*#__PURE__*/React.createElement("div", {
     className: "hero-thumbs",
     style: {
       position: "absolute",
@@ -7448,7 +7497,7 @@ function App() {
     }
   }), /*#__PURE__*/React.createElement("div", {
     style: {
-      overflowX: "auto", display: "flex", gap: 8,
+      overflowX: "auto", WebkitOverflowScrolling: "touch", msOverflowStyle: "none", scrollbarWidth: "none", display: "flex", gap: 8,
       padding: "14px 20px 0",
       position: "relative", zIndex: 10,
       marginTop: -30
@@ -7473,6 +7522,7 @@ function App() {
     className: "continue-card",
     style: {
       background: "rgba(0,0,0,0.85)",
+      WebkitBackdropFilter: "blur(20px)",
       backdropFilter: "blur(20px)",
       border: `1px solid rgba(${th.accentRgb},0.1)`,
       borderRadius: 28,
@@ -7508,6 +7558,9 @@ function App() {
       display: "flex",
       gap: 14,
       overflowX: "auto",
+      WebkitOverflowScrolling: "touch",
+      msOverflowStyle: "none",
+      scrollbarWidth: "none",
       paddingBottom: 4
     }
   }, DATA.continue.map(item => /*#__PURE__*/React.createElement("div", {
@@ -7794,7 +7847,7 @@ function App() {
     }),
     /*#__PURE__*/React.createElement("div", {
       className: "hs",
-      style: { display: "flex", gap: 12, overflowX: "auto", paddingBottom: 6 }
+      style: { display: "flex", gap: 12, overflowX: "auto", WebkitOverflowScrolling: "touch", msOverflowStyle: "none", scrollbarWidth: "none", paddingBottom: 6 }
     }, DATA.schedule.map(item => /*#__PURE__*/React.createElement("div", {
       key: item.id,
       onClick: () => openCard(item),
@@ -7880,6 +7933,9 @@ function App() {
       display: "flex",
       gap: 14,
       overflowX: "auto",
+      WebkitOverflowScrolling: "touch",
+      msOverflowStyle: "none",
+      scrollbarWidth: "none",
       paddingBottom: 18
     }
   }, (() => {
@@ -8704,6 +8760,9 @@ function App() {
         display: "flex",
         gap: 14,
         overflowX: "auto",
+        WebkitOverflowScrolling: "touch",
+        msOverflowStyle: "none",
+        scrollbarWidth: "none",
         paddingBottom: 4
       }
     }, liveAnime.map((a, i) => /*#__PURE__*/React.createElement("div", {
